@@ -1,0 +1,18 @@
+Eclipse
+	- Search로 찾은 파일을 오픈 시 기존 창으로 대체되는 것을 새창으로 띄우기
+	- Window - Preferences > General > Search > "Reuse editors to show matches"
+
+	* Test 코드 쉽게 작성하기
+	- Window > Preferences > Java > Editor > Templates;
+	- New > Name에 이름 정하고(난 import static test method의 약자로? it로 지정함)
+	- import static org.hamcrest.CoreMatchers.*;
+	- import org.junit.Test; 추가 후 완료
+IntelliJ
+	- Project Settings > Build, Execution, Deployment > Compiler > "Build process heap size": 700 -> 5120
+	
+	- Intellij는 ${TOMCAT_HOME}을 기반으로 공유하는 형식임. 따라서 SSL설정 등 server.xml을 직접 수정해줘야 함
+	- server.xml에 아래를 직접 추가해준다.
+	<Connector SSLEnabled="true" ciphers="TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,    TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_RC4_128_SHA,        TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA256,        TLS_RSA_WITH_AES_256_CBC_SHA,SSL_RSA_WITH_RC4_128_SHA" clientAuth="false" keystoreFile="C:\11st\keystore\ATT01091.keystore" keystorePass="changeit" maxThreads="200" port="443" scheme="https" secure="true" sslProtocol="TLS"/>
+	- Tomcat VM options에 아래를 추가, 인코딩 EUC-KR로하면 깨짐(비트버킷에는 EUC-KR로 나와있는데 이상함)
+	-Xms512m -Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=512m -Difhub.name=staging -Dserver.type=local -Dbo.type=SBO -Dfile.encoding=UTF-8
+	

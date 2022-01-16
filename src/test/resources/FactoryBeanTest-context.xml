@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"	
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- Spring의 FactoryBean 인터페이스를 구현한 클래스를 빈으로 등록하면 getObject() 메소드를 호출해 빈으로 등록해준다 -->
+	<bean id="message" class="learningtest.spring.factorybean.MessageFactoryBean">
+		<property name="text" value="Factory Bean" />
+	</bean>
+	
+</beans> 

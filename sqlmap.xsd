@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"-->
+<!--		targetNameSpace="http://www.epril.com/sqlmap"-->
+<!--		xmlns:tns="http://www.epril.com/sqlmap" elementFormDefault="qualified">-->
+<!--	<element name="sqlmap">-->
+<!--		<complexType>-->
+<!--			<sequence>-->
+<!--				<element name="sql" maxOccurs="unbounded" type="tns:sqlType" />-->
+<!--			</sequence>-->
+<!--		</complexType>-->
+<!--	</element>-->
+<!--	<complexType name="sqlType">-->
+<!--		<simpleContent>-->
+<!--			<extension base="xsd:string">-->
+<!--				<attribute name="key" use="required" type="xsd:string" />-->
+<!--			</extension>-->
+<!--		</simpleContent>-->
+<!--	</complexType>-->
+<!--</schema>-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="sqlmap">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="sql" maxOccurs="unbounded" type="sqlType" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="sqlType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="key" use="required" type="xsd:string" />
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+</xsd:schema>

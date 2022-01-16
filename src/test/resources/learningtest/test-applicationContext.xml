@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+	"http://www.springframework.org/dtd/spring-beans-2.0.dtd"> -->	<!-- DTD 설정 -->
+
+<!-- 네임스페이스가 지원되는 스키마, beans 태그를 기본 네임스페이스로 하는 스키마 선언 -->
+<beans xmlns="http://www.springframework.org/schema/beans"	
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+						   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						   http://www.springframework.org/schema/context
+						   http://www.springframework.org/schema/context/spring-context-3.0.xsd
+						   http://www.springframework.org/schema/jdbc
+						   http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd">
+	
+	<!-- <bean id="connectionMaker" class="sino.practice.tour.user.dao.DConnectionMaker" /> -->
+	
+	<!-- & -> 참조자로 인식하므로 &amp;로 해야됨 -->
+	<!--<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />	&lt;!&ndash; 스프링이 스트링 > class 타입 오브젝트로 형변환을 해준다 &ndash;&gt;
+		<property name="url" value="jdbc:mysql://localhost:3306/practice?useSSL=false&amp;characterEncoding=UTF8" />
+		<property name="username" value="root" />
+		<property name="password" value="1234" />
+	</bean>-->	<!-- JavaConfig로 이관 -->
+	
+	<!-- 
+	<bean id="testDBConnectionMaker" class="sino.practice.tour.user.dao.TestDBConnectionMaker" />
+	<bean id="productionDBConnectionMaker" class="sino.practice.tour.user.dao.ProductionDBConnectionMaker" />
+	 -->
+<!--	<bean id="sqlService" class="kr.co.mytour.learningtest.user.sqlservice.SimpleSqlService">-->
+<!--		<property name="sqlMap">-->
+<!--			<map>-->
+<!--				<entry key="userAdd" value="insert into users(id, name, password, level, login, recommend, email) values(?, ?, ?, ?, ?, ?, ?)" />-->
+<!--				<entry key="userGet" value="select * from users where id = ?" />-->
+<!--				<entry key="userDeleteAll" value="delete from users" />-->
+<!--				<entry key="userGetCount" value="select count(*) from users" />-->
+<!--				<entry key="userGetAll" value="select * from users order by id" />-->
+<!--				<entry key="userUpdate" value="update users set name = ?, password = ?, level = ?, login = ?,  recommend = ?, email = ? where id = ?" />-->
+<!--			</map>-->
+<!--		</property>-->
+<!--	</bean>-->
+	
+<!-- 	<bean id="sqlService" class="kr.co.mytour.learningtest.user.sqlservice.OxmSqlService">
+		<property name="unmarshaller" ref="unmarshaller" />
+
+		<property name="sqlmap" value="classpath:kr/co/mytour/learningtest/user/dao/sqlmap.xml" />
+		<property name="sqlmap" value="file:/opt/resources/sqlmap.xml" />
+		<property name="sqlmap" value="http://www.example.com/sqlmap.xml" />
+
+		<property name="sqlRegistry" ref="sqlRegistry" />
+	</bean> -->
+
+	<!--<bean id="sqlRegistry" class="kr.co.mytour.learningtest.user.sqlservice.ConcurrentHashMapSqlRegistry" />-->
+	
+ 	<!--<bean id="unmarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+		<property name="contextPath" value="kr.co.mytour.learningtest.user.sqlservice.jaxb" />
+	</bean>--> <!-- JavaConfig로 이관 -->
+	
+	<!--<bean id="sqlService" class="kr.co.mytour.learningtest.user.sqlservice.XmlSqlService">
+		<property name="sqlReader" ref="sqlService" />
+		<property name="sqlRegistry" ref="sqlService" />
+		<property name="sqlmapFile" value="sqlmap.xml" />
+	</bean>-->
+	
+ 	<!--<bean id="sqlService" class="kr.co.mytour.learningtest.user.sqlservice.BaseSqlService">
+		<property name="sqlReader" ref="sqlReader" />
+		<property name="sqlRegistry" ref="sqlRegistry" />
+	</bean>
+	
+	<bean id="sqlReader" class="kr.co.mytour.learningtest.user.sqlservice.JaxbXmlSqlReader">
+		<property name="sqlmapFile" value="sqlmap.xml" />
+	</bean>
+	
+	<bean id="sqlRegistry" class="kr.co.mytour.learningtest.user.sqlservice.HashMapSqlRegistry" />-->
+	
+	<!--<bean id="sqlService" class="kr.co.mytour.learningtest.user.sqlservice.DefaultSqlService" />-->
+<!--	<bean id="sqlRegistry" class="kr.co.mytour.learningtest.user.sqlservice.ConcurrentHashMapSqlRegistry" />-->
+	<!--<bean id="sqlRegistry" class="kr.co.mytour.learningtest.user.sqlservice.EmbeddedDbSqlRegistry">
+		<property name="dataSource" ref="embeddedDatabase" />
+	</bean>--> <!-- JavaConfig로 이관 -->
+
+	<!--<bean id="sqlService" class="kr.co.mytour.learningtest.user.sqlservice.OxmSqlService">
+		<property name="unmarshaller" ref="unmarshaller" />
+		&lt;!&ndash;<property name="sqlmap" value="classpath:kr/co/mytour/learningtest/user/dao/sqlmap.xml" />
+		<property name="sqlmap" value="file:/opt/resources/sqlmap.xml" />
+		<property name="sqlmap" value="http://www.epril.com/resources/sqlmap.xml" />&ndash;&gt;
+		<property name="sqlRegistry" ref="sqlRegistry" />
+	</bean>--> <!-- JavaConfig로 이관 -->
+
+	<!--<bean id="userDao" class="kr.co.mytour.learningtest.user.dao.UserDaoJdbc">
+		&lt;!&ndash; <property name="connectionMaker" ref="connectionMaker" /> &ndash;&gt;
+		<property name="dataSource" ref="dataSource" />
+		&lt;!&ndash; <property name="jdbcContext" ref="jdbcContext" />  &ndash;&gt;
+		&lt;!&ndash; <property name="sqlAdd" value="insert into users(id, name, password, level, login, recommend, email) values(?, ?, ?, ?, ?, ?, ?)" /> &ndash;&gt;
+		&lt;!&ndash; <property name="sqlMap">
+			<map>
+				<entry key="add" value="insert into users(id, name, password, level, login, recommend, email) values(?, ?, ?, ?, ?, ?, ?)" />
+				<entry key="get" value="select * from users where id = ?" />
+				<entry key="deleteAll" value="delete from users" />
+				<entry key="getCount" value="select count(*) from users" />
+				<entry key="getAll" value="select * from users order by id" />
+				<entry key="update" value="update users set name = ?, password = ?, level = ?, login = ?,  recommend = ?, email = ? where id = ?" />
+			</map>
+		</property> &ndash;&gt;
+		<property name="sqlService" ref="sqlService" />
+	</bean>--> <!-- JavaConfig로 이관 -->
+
+	<!-- <bean id="jdbcContext" class="kr.co.mytour.learningtest.user.dao.JdbcContext">
+		<property name="dataSource" ref="dataSource" />
+	</bean>  -->
+	
+	<!--<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>--> <!-- JavaConfig로 이관 -->
+	
+	<!-- <bean id="userService" class="kr.co.mytour.learningtest.user.service.UserServiceTx">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="userService" ref="userServiceImpl" />	
+	</bean> -->
+	
+<!--	<bean id="userServiceImpl" class="kr.co.mytour.learningtest.user.service.UserServiceImpl">
+		<property name="userDao" ref="userDao" />
+		<property name="mailSender" ref="mailSender" />	
+	</bean>-->
+	
+	<!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="mail.server.com" />
+	</bean> -->
+	
+	<!--<bean id="mailSender" class="kr.co.mytour.learningtest.user.service.DummyMailSender" />--> <!-- JavaConfig로 이관 -->
+	
+	<!-- <bean id="userService" class="kr.co.mytour.learningtest.user.service.TxProxyFactoryBean">
+		<property name="target" ref="userServiceImpl" />
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="pattern" value="upgradeLevels" />
+		<property name="serviceInterface" value="kr.co.mytour.learningtest.user.service.UserService" />
+	</bean> -->
+	
+	<!-- Tx 어드바이스 -->
+	<bean id="transactionAdvice" class="kr.co.mytour.learningtest.user.service.TransactionAdvice">
+		<property name="transactionManager" ref="transactionManager" />
+	</bean>
+	
+	<!-- Tx 포인트컷 -->
+	<!-- <bean id="transactionPointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+		<property name="mappedName" value="upgrade*" />
+	</bean> -->
+	
+	<bean id="transactionPointcut" class="kr.co.mytour.learningtest.user.service.NameMatchClassMethodPointcut">
+		<property name="mappedClassName" value="*ServiceImpl" />
+		<property name="mappedName" value="upgrade*" />
+	</bean>
+	
+	<!-- Tx 어드바이저 -->
+	<bean id="transactionAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="transactionAdvice" />
+		<property name="pointcut" ref="transactionPointcut" />
+	</bean>
+	
+	<!-- <bean id="userService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="userServiceImpl" />
+		<property name="interceptorNames">
+			<list>
+				<value>transactionAdvisor</value> 여기에 해당 클래스의 모든 메소드에 적용하고싶으면 어드바이저를 넣어도 
+			</list>
+		</property>
+	</bean> -->
+	
+	<!--<bean id="userService" class="kr.co.mytour.learningtest.user.service.UserServiceImpl">
+		<property name="userDao" ref="userDao" />
+		<property name="mailSender" ref="mailSender" />
+	</bean>--> <!-- JavaConfig로 이관 -->
+
+	<!--<bean id="testUserService" class="learningtest.user.service.UserServiceTest$TestUserServiceImpl" parent="userService" />-->	<!-- userService 빈의 프로퍼티 설정을 상속받는다 -->	<!-- JavaConfig로 이관 -->
+	
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />
+	
+	<!-- 코드의 애노테이션을 이용해서 부가적인 빈 설정 또는 초기화 작업을 해주는 후처리기, @PostContrunct -->
+<!--	<context:annotation-config />-->	<!-- Java Config를 사용하는 컨테이너는 빈 후처리기를 자동으로 등록해준다 -->
+
+	<!-- EmbeddedDatabaseBuilder를 활용해서 EmbeddedDatabase타입의 오브젝트를 생성해주는 팩토리 빈 -->
+<!--	<jdbc:embedded-database id="embeddedDatabase" type="HSQL">-->
+<!--		<jdbc:script location="classpath:/learningtest/embeddeddb/schema.sql" />-->
+<!--&lt;!&ndash;			<jdbc:script location="classpath:/kr/co/mytour/learningtest/user/sqlservice/updatable/sqlRegistrySchema.sql" />&ndash;&gt;-->
+<!--	</jdbc:embedded-database>-->
+</beans> 

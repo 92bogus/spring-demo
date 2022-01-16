@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+	"http://www.springframework.org/dtd/spring-beans-2.0.dtd"> -->	<!-- DTD 설정 -->
+
+<!-- 네임스페이스가 지원되는 스키마, beans 태그를 기본 네임스페이스로 하는 스키마 선언 -->
+<beans xmlns="http://www.springframework.org/schema/beans"	
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- <bean id="connectionMaker" class="sino.practice.tour.user.dao.DConnectionMaker" /> -->
+	
+	<!-- & -> 참조자로 인식하므로 &amp;로 해야됨 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />	<!-- 스프링이 스트링 > class 타입 오브젝트로 형변환을 해준다 -->
+		<property name="url" value="jdbc:mysql://localhost:3306/practice?useSSL=false&amp;characterEncoding=UTF8" />
+		<property name="username" value="root" />
+		<property name="password" value="1234" />
+	</bean>
+	
+	<!-- 
+	<bean id="testDBConnectionMaker" class="sino.practice.tour.user.dao.TestDBConnectionMaker" />
+	<bean id="productionDBConnectionMaker" class="sino.practice.tour.user.dao.ProductionDBConnectionMaker" />
+	 -->
+	
+	<bean id="userDao" class="kr.co.mytour.learningtest.user.dao.UserDao">
+		<!-- <property name="connectionMaker" ref="connectionMaker" /> -->
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+</beans> 

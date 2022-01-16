@@ -1,0 +1,14 @@
+리팩토링 - 리팩토링(마틴 파울러, 켄트 벡 공저)
+디자인패턴 - GoF의 디자인 패턴(에릭 감마 외), Head First Design Patterns(에릭 프리먼)
+객체지향 설계 원칙 - SOLID, http://butunclebob.com/ArticleS.UncleBob.principlesOfOod,
+Java 프로그래머를 위한 UML 실전에서는 이것만 쓴다(UML for Java Programmer),
+소프트웨어 개발의 지혜: 원칙, 디자인 패턴, 실천방법(Agile Software Development, Principles, Patterns, and 
+Practices, 밥 마틴
+
+S - SRP: The Single Responsibility Principle: 단일 책임 원칙
+O - OCP: The Open Closed Principle: 개방 폐쇄 원칙
+L - LSP: The Liskov Substitution Principle: 리스코프 치환 원칙
+I - ISP: The Interface Segregation Principle: 인터페이스 분리 원칙
+D - DIP: The Dependency Inversion Principle: 의존관계 역전 원칙
+
+

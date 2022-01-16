@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean id="unmarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+		<property name="contextPath" value="kr.co.mytour.learningtest.user.sqlservice.jaxb" />
+	</bean>
+
+	<!-- Castor 안됨... 이유는 모르겠음... mapping.xml에서 URI부분 오류나긴하는데 추후 확인 필요 -->
+	<!--<bean id="unmarshaller" class="org.springframework.oxm.castor.CastorMarshaller">
+		<property name="mappingLocation" value="learningtest/oxm/castor/mapping.xml" />
+	</bean>-->
+
+</beans>
